@@ -43,6 +43,13 @@ class CustomDrawer extends StatelessWidget {
                                 fontWeight: FontWeight.bold
                               ),
                             ),
+                            Text("Entre ou cadastre-se >",
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold
+                              ),
+                            )
                           ],
                       )
                     )
