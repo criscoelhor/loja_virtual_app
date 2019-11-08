@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual_app/tiles/drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
+
+  final PageController _pageController;
+  CustomDrawer(this._pageController);
+
   @override
   Widget build(BuildContext context) {
     Widget _buildDrawerBack() => Container(
@@ -43,19 +48,29 @@ class CustomDrawer extends StatelessWidget {
                                 fontWeight: FontWeight.bold
                               ),
                             ),
-                            Text("Entre ou cadastre-se >",
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold
+                            GestureDetector(
+                              child: Text("Entre ou cadastre-se >",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold
+                                ),
                               ),
+                              onTap: (){
+
+                              },
                             )
                           ],
                       )
                     )
                   ],
                 ),
-              )
+              ),
+              Divider(),
+              DrawerTile(Icons.home, "Início", _pageController, 0),
+              DrawerTile(Icons.list, "Produtos", _pageController, 1),
+              DrawerTile(Icons.location_on, "Lojas", _pageController, 2),
+              DrawerTile(Icons.playlist_add_check, "Meus Pedidos", _pageController, 3),
             ],
           )
         ],

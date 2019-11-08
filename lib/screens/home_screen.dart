@@ -3,7 +3,6 @@ import 'package:loja_virtual_app/tabs/home_tab.dart';
 import 'package:loja_virtual_app/widgets/custom_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
-
   final _pageController = PageController();
 
   @override
@@ -14,8 +13,17 @@ class HomeScreen extends StatelessWidget {
       children: <Widget>[
         Scaffold(
           body: HomeTab(),
-          drawer: CustomDrawer(),
-        )
+          drawer: CustomDrawer(_pageController),
+        ),
+        Container(
+          color: Colors.red,
+        ),
+        Container(
+          color: Colors.yellow,
+        ),
+        Container(
+          color: Colors.green,
+        ),
       ],
     );
   }
