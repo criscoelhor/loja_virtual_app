@@ -66,7 +66,9 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              Divider(),
+              Divider(
+                color: Theme.of(context).primaryColor,
+              ),
               DrawerTile(Icons.home, "Início", _pageController, 0),
               DrawerTile(Icons.list, "Produtos", _pageController, 1),
               DrawerTile(Icons.location_on, "Lojas", _pageController, 2),
