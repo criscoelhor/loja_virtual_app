@@ -1,6 +1,8 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:loja_virtual_app/datas/cart_product.dart';
 import 'package:loja_virtual_app/datas/products_data.dart';
+import 'package:loja_virtual_app/models/cart_model.dart';
 import 'package:loja_virtual_app/models/user_model.dart';
 
 import 'login_screen.dart';
@@ -107,15 +109,22 @@ class _ProductScreenState extends State<ProductScreen> {
                   child: RaisedButton(
                     onPressed: size != null ? () {
                         if(UserModel.of(context).isLoggedIn()){
-                          //adicionar ao carrinho
+                          CartProduct cart = CartProduct();
+                          cart.size = size;
+                          cart.quantity = 1;
+                          cart.pid = product.id;
+
+
+
+                          CartModel.of(context).addcartItem(cart);
                         } else{
                           Navigator.of(context).push(
                             MaterialPageRoute(builder: (context)=>LoginScreen())
                           );
                         }
                     } : null,
-                    child: Text(
-                      "Adicionar no Carrinho",
+                    child: Text(UserModel.of(context).isLoggedIn() ?
+                      "Adicionar no Carrinho" : "Entre para Comprar",
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
