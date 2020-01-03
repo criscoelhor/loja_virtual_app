@@ -8,6 +8,8 @@ class CartModel extends Model {
 
   UserModel user;
 
+  bool isLoading = false;
+
   List<CartProduct> products = [];
 
   CartModel(this.user);
