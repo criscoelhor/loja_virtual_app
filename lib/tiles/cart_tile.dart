@@ -71,7 +71,7 @@ class CartTile extends StatelessWidget {
                 future: Firestore.instance
                     .collection("products")
                     .document(cartProduct.category)
-                    .collection("items")
+                    .collection("itens")
                     .document(cartProduct.pid)
                     .get(),
                 builder: (context, snapshot) {
