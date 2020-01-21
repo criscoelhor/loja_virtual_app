@@ -7,11 +7,12 @@ import 'package:scoped_model/scoped_model.dart';
 class CartModel extends Model {
 
   UserModel user;
-
-  bool isLoading = false;
-
   List<CartProduct> products = [];
 
+  String couponCode;
+  int discountPercentage = 0;
+
+  bool isLoading = false;
   CartModel(this.user){
     if(user.isLoggedIn())
       _loadCartItems();
