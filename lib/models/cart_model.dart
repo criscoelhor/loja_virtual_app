@@ -56,6 +56,11 @@ class CartModel extends Model {
     notifyListeners();
   }
 
+  void setCoupon(String couponCode, int discountPercentage){
+    this.couponCode = couponCode;
+    this.discountPercentage = discountPercentage;
+  }
+
   void  _loadCartItems() async {
      QuerySnapshot query = await Firestore.instance.collection("users").document(user.firebaseUser.uid).collection("cart")
         .getDocuments();
