@@ -8,6 +8,8 @@ import 'package:loja_virtual_app/widgets/discount_card.dart';
 import 'package:loja_virtual_app/widgets/ship_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import 'order_screen.dart';
+
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,50 +41,54 @@ class CartScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.remove_shopping_cart, size: 80.0, color: Theme.of(context).primaryColor),
-                SizedBox(height: 16.0,),
-                Text("Faça o login para adicionar produtos!",
+                Icon(Icons.remove_shopping_cart,
+                    size: 80.0, color: Theme.of(context).primaryColor),
+                SizedBox(
+                  height: 16.0,
+                ),
+                Text(
+                  "Faça o login para adicionar produtos!",
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 16.0,),
+                SizedBox(
+                  height: 16.0,
+                ),
                 RaisedButton(
                   child: Text("Entrar", style: TextStyle(fontSize: 18.0)),
                   textColor: Colors.white,
                   color: Theme.of(context).primaryColor,
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context)=> LoginScreen())
-                    );
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                 )
               ],
             ),
           );
-        } else if (model.products == null || model.products.length == 0){
+        } else if (model.products == null || model.products.length == 0) {
           return Center(
-            child: Text("Nenhum produto no carrinho!",
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            )
-          );
+              child: Text(
+            "Nenhum produto no carrinho!",
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ));
         } else {
           return ListView(
             children: <Widget>[
               Column(
-                children: model.products.map(
-                    (product){
-                      return CartTile(product);
-                    }
-                ).toList(),
+                children: model.products.map((product) {
+                  return CartTile(product);
+                }).toList(),
               ),
               DiscountCard(),
               ShipCard(),
               CartPrice(() async {
-                  String orderId = await model.finishOrder();
-                  if(orderId != null){
-                    print(orderId);
-                  }
+                String orderId = await model.finishOrder();
+                if (orderId != null) {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => OrderScreen(orderId)));
+                }
               }),
             ],
           );

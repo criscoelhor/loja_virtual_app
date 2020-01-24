@@ -14,6 +14,7 @@ class OrderScreen extends StatelessWidget {
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),
+          alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -25,7 +26,7 @@ class OrderScreen extends StatelessWidget {
               Text("Pedido realizado com sucesso!",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
               ),
-              Text("Có")
+              Text("Código do pedido: $orderId", style: TextStyle(fontSize: 16.0),)
             ],
           ),
         ));
