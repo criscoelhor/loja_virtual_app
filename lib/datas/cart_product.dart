@@ -26,7 +26,7 @@ class CartProduct{
       "pid": pid,
       "size": size,
       "quantity": quantity,
-      //"productData": productData.toResumeMap()
+      "product": productData.toResumeMap()
     };
   }
 }
